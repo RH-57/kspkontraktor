@@ -142,7 +142,7 @@
               @if($post->featured_image)
                 <div class="col-md-4">
                   <div class="card h-100 shadow-sm">
-                   <img src="{{ asset('/' . $post->featured_image) }}"
+                   <img src="{{ asset('storage/public/' . $post->featured_image) }}"
                         alt="{{ $post->title }}"
                         class="card-img-top rounded"
                         style="height:200px; object-fit:cover;">
