@@ -1,35 +1,34 @@
-    <div class="container-fluid px-5 d-none d-lg-block">
-        <div class="row gx-5">
-            <div class="col-lg-4 text-center py-3">
-                <div class="d-inline-flex align-items-center">
-                    <i class="bi bi-geo-alt fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase fw-bold">Our Office</h6>
-                        <span>{{$contacts->address}}</span>
-                    </div>
+<div class="container-fluid px-4 d-none d-lg-block">
+    <div class="row gx-4">
+        <div class="col-lg-4 text-center py-2">
+            <div class="d-inline-flex align-items-center">
+                <i class="bi bi-geo-alt fs-4 text-primary me-2"></i>
+                <div class="text-start">
+                    <h6 class="text-uppercase fw-semibold mb-0" style="font-size: 0.85rem;">Our Office</h6>
+                    <span style="font-size: 0.8rem;">{{$contacts->address}}</span>
                 </div>
             </div>
-            <div class="col-lg-4 text-center border-start border-end py-3">
-                <div class="d-inline-flex align-items-center">
-                    <i class="bi bi-envelope-open fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase fw-bold">Email Us</h6>
-                        <span>{{$contacts->email}}</span>
-                    </div>
+        </div>
+        <div class="col-lg-4 text-center border-start border-end py-2">
+            <div class="d-inline-flex align-items-center">
+                <i class="bi bi-envelope-open fs-4 text-primary me-2"></i>
+                <div class="text-start">
+                    <h6 class="text-uppercase fw-semibold mb-0" style="font-size: 0.85rem;">Email Us</h6>
+                    <span style="font-size: 0.8rem;">{{$contacts->email}}</span>
                 </div>
             </div>
-            <div class="col-lg-4 text-center py-3">
-                <div class="d-inline-flex align-items-center">
-                    <i class="bi bi-phone-vibrate fs-1 text-primary me-3"></i>
-                    <div class="text-start">
-                        <h6 class="text-uppercase fw-bold">Call Us</h6>
-                        <span>+{{$contacts->phone}}</span>
-                    </div>
+        </div>
+        <div class="col-lg-4 text-center py-2">
+            <div class="d-inline-flex align-items-center">
+                <i class="bi bi-phone-vibrate fs-4 text-primary me-2"></i>
+                <div class="text-start">
+                    <h6 class="text-uppercase fw-semibold mb-0" style="font-size: 0.85rem;">Call Us</h6>
+                    <span style="font-size: 0.8rem;">+{{$contacts->phone}}</span>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
+</div>
 
 
     <!-- Navbar Start -->
