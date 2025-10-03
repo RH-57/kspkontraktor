@@ -56,7 +56,6 @@
                             <i class="fas {{ $service->icon }}"></i> Service
                         </span>
                         <h2 class="fw-bold">{{ $service->title }}</h2>
-                        <p class="text-muted">{{ $service->short_description }}</p>
                     </div>
                     <div class="service-description">
                         {!! $service->description !!}
