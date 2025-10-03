@@ -94,7 +94,7 @@
                                     <td>{{$testimonial->client_name}}</td>
                                     <td>{{$testimonial->project_name}}</td>
                                     <td>{{$testimonial->description}}</td>
-                                    <td><img src="{{asset('storage/' . $testimonial->image)}}" alt="testimonial image" width="80" class="img-thumbnail"></td>
+                                    <td><img src="{{asset('storage/public/' . $testimonial->image)}}" alt="testimonial image" width="80" class="img-thumbnail"></td>
                                     <td>
                                         <a href="{{ route('testimonials.edit', $testimonial->id) }}" class="btn btn-sm btn-warning">
                                             <i class="bi bi-pen"></i>
