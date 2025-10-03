@@ -5,8 +5,30 @@
     <meta charset="utf-8">
     <title>Home - PT. Karya Solusi Pembangunan</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+     <!-- Meta Deskripsi -->
+    <meta name="description" content="PT. Karya Solusi Pembangunan adalah kontraktor profesional terpercaya yang menyediakan layanan konstruksi, renovasi, dan pembangunan dengan kualitas terbaik serta harga terjangkau.">
+
+    <!-- Meta Keywords -->
+    <meta name="keywords" content="kontraktor, jasa kontraktor, jasa bangun rumah, renovasi rumah, kontraktor profesional, pembangunan gedung, jasa konstruksi, PT. Karya Solusi Pembangunan">
+
+    <!-- Author -->
+    <meta name="author" content="PT. Karya Solusi Pembangunan">
+
+     <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PT. Karya Solusi Pembangunan | Kontraktor Profesional & Jasa Bangun">
+    <meta property="og:description" content="Percayakan pembangunan rumah, gedung, dan proyek konstruksi Anda kepada kontraktor berpengalaman PT. Karya Solusi Pembangunan.">
+    <meta property="og:image" content="{{ asset('assets/web/img/carousel-1.jpg') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="PT. Karya Solusi Pembangunan">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PT. Karya Solusi Pembangunan | Kontraktor Profesional & Jasa Bangun">
+    <meta name="twitter:description" content="Layanan konstruksi terpercaya dengan tenaga ahli, material berkualitas, dan garansi hasil.">
+    <meta name="twitter:image" content="{{ asset('assets/web/img/carousel-2.jpg') }}">
+
+    <link rel="canonical" href="{{ url()->current() }}">
 
     <!-- Favicon -->
     <link href="{{asset('assets/web/img/favicon.ico')}}" rel="icon">
