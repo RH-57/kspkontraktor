@@ -230,14 +230,14 @@
                 @foreach($projects as $project)
                 <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
                     <div class="position-relative portfolio-box">
-                        <img class="img-fluid w-100" src="{{ $project->images->first() ? asset('storage/' . $project->images->first()->image) : asset('default.jpg') }}"
+                        <img class="img-fluid w-100" src="{{ $project->images->first() ? asset('storage/public/' . $project->images->first()->image) : asset('default.jpg') }}"
                         alt="{{ $project->name }}"
                         style="height: 250px; object-fit: cover; border-radius: 5px;" />
                         <a class="portfolio-title shadow-sm" href="">
                             <p class="h4 text-uppercase">{{$project->name}}</p>
                             <span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{$project->location}}</span>
                         </a>
-                        <a class="portfolio-btn" href="{{ $project->images->first() ? asset('storage/' . $project->images->first()->image) : asset('default.jpg') }}" data-lightbox="portfolio">
+                        <a class="portfolio-btn" href="{{ $project->images->first() ? asset('storage/public/' . $project->images->first()->image) : asset('default.jpg') }}" data-lightbox="portfolio">
                             <i class="bi bi-plus text-white"></i>
                         </a>
                     </div>
@@ -271,7 +271,7 @@
                     <!-- Client Info -->
                     <div class="d-flex align-items-center">
                         <!-- Klik gambar bisa diperbesar -->
-                        <a href="{{ asset('storage/' .$testi->image) }}" class="glightbox" data-gallery="testimonials">
+                        <a href="{{ asset('storage/public/' .$testi->image) }}" class="glightbox" data-gallery="testimonials">
                             <img src="{{ asset('storage/' .$testi->image) }}"
                                 class="rounded-circle me-3 shadow-sm img-thumbnail"
                                 alt="Client Image"
