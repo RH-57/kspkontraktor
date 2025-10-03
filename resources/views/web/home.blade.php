@@ -143,7 +143,7 @@
                     <div class="service-item bg-white d-flex flex-column align-items-center text-center h-100">
                         <img
                             class="img-fluid"
-                            src="{{ asset('storage/' .$service->image) }}"
+                            src="{{ asset('storage/public/' .$service->image) }}"
                             alt="{{ $service->title }}"
                             style="width: 100%; height: 250px; object-fit: cover; border-top-left-radius: 0.5rem; border-top-right-radius: 0.5rem;"
                         />
