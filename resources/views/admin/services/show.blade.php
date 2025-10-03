@@ -162,7 +162,7 @@
                         <div class="col-md-4 mb-3">
                             <strong>Image</strong><br>
                             @if($service->image)
-                            <img src="{{ asset('storage/public' . $service->image) }}"
+                            <img src="{{ asset('storage/public/' . $service->image) }}"
                                 alt="{{ $service->title }}"
                                 class="img-fluid rounded shadow-sm"
                                 style="max-height:200px;">
