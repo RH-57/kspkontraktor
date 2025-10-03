@@ -272,7 +272,7 @@
                     <div class="d-flex align-items-center">
                         <!-- Klik gambar bisa diperbesar -->
                         <a href="{{ asset('storage/public/' .$testi->image) }}" class="glightbox" data-gallery="testimonials">
-                            <img src="{{ asset('storage/' .$testi->image) }}"
+                            <img src="{{ asset('storage/public/' .$testi->image) }}"
                                 class="rounded-circle me-3 shadow-sm img-thumbnail"
                                 alt="Client Image"
                                 style="width: 70px; height: 70px; object-fit: cover; border: 3px solid #0d6efd; cursor: zoom-in;">
