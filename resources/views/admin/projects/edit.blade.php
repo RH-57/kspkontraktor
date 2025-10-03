@@ -127,7 +127,7 @@
                 <div class="row mt-3">
                   @foreach($project->images as $img)
                     <div class="col-md-3 text-center mb-3">
-                      <img src="{{ asset('storage/'.$img->image) }}" class="img-thumbnail mb-2" width="200">
+                      <img src="{{ asset('storage/public/'.$img->image) }}" class="img-thumbnail mb-2" width="200">
                       <form action="{{ route('projects.images.delete', $img->id) }}" method="POST">
                           @csrf
                           @method('DELETE')

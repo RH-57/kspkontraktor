@@ -149,7 +149,7 @@
                             @forelse($project->images as $img)
                                 <div class="col-md-3 col-sm-6 mb-3">
                                     <div class="card h-100 shadow-sm">
-                                        <img src="{{ asset('storage/' . $img->image) }}"
+                                        <img src="{{ asset('storage/public/' . $img->image) }}"
                                             alt="{{ $project->name }}"
                                             class="card-img-top rounded"
                                             style="height:200px; object-fit:cover;">
