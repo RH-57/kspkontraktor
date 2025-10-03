@@ -73,7 +73,7 @@
             <!-- Artikel Utama -->
             <div class="col-lg-8">
                 @if($post->featured_image)
-                    <img src="{{ asset('storage/' . $post->featured_image) }}"
+                    <img src="{{ asset('/' . $post->featured_image) }}"
                         class="img-fluid rounded shadow-sm mb-4"
                         alt="{{ $post->title }}"
                         style="width: 100%; max-height: 400px; object-fit: cover;">
