@@ -39,7 +39,7 @@ class PostController
             $filename = time() . '_' . preg_replace('/\s+/', '_', $file->getClientOriginalName());
 
             // simpan ke storage/app/public/posts/images
-            $file->storeAs('public/posts/images', $filename);
+            $file->storeAs('posts/images', $filename);
 
             // ambil URL publik
             $url = asset('storage/posts/images/' . $filename);
