@@ -309,7 +309,7 @@
                 @foreach($posts as $post)
                 <div class="col-lg-4 col-md-6">
                     <div class="bg-light">
-                        <img class="img-fluid" src="{{ asset('storage/' . $post->featured_image) }}" alt="" style="height: 250px; object-fit: cover; border-radius: 5px;">
+                        <img class="img-fluid" src="{{ asset('storage/public/' . $post->featured_image) }}" alt="" style="height: 250px; object-fit: cover; border-radius: 5px;">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-4">
                                 <div class="d-flex align-items-center">
