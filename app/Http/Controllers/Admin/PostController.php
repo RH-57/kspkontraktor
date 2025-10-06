@@ -39,7 +39,7 @@ class PostController
             $filename = time() . '_' . preg_replace('/\s+/', '_', $file->getClientOriginalName());
 
             // simpan ke storage/app/public/posts/images
-            $file->storeAs('public/posts/images', $filename);
+            $file->storeAs('posts/images', $filename, 'public');
 
             // ambil URL publik
             $url = asset('storage/posts/images/' . $filename);
@@ -62,7 +62,6 @@ class PostController
 
     public function store(Request $request)
     {
-        // Validasi input
         $request->validate([
             'title'            => 'required|string|max:255',
             'post_category_id' => 'required|exists:post_categories,id',
@@ -74,41 +73,28 @@ class PostController
             'meta_keyword'     => 'nullable|string|max:255',
         ]);
 
+        $slug = Str::slug($request->title) . '-' . time();
 
-        // Siapkan data
-        $data = $request->only([
-            'title',
-            'post_category_id',
-            'content',
-            'status',
-            'meta_title',
-            'meta_description',
-            'meta_keyword',
-        ]);
-
-        // Tambahkan user_id (misal ambil dari auth)
-        $data['user_id'] = Auth::id();
-
-        // Generate slug
-        $data['slug'] = Str::slug($request->title) . '-' . time();
-
-        // Jika upload featured image
+        $featuredImagePath = null;
         if ($request->hasFile('featured_image')) {
-            $file     = $request->file('featured_image');
-            $filename = time() . '_' . preg_replace('/\s+/', '_', $file->getClientOriginalName());
-            $file->storeAs('public/posts/featured', $filename);
-
-            // Sesuaikan URL dengan path yang kamu pakai (pakai /storage/public/…)
-            $data['featured_image'] = 'posts/featured/' . $filename;
+            // simpan ke storage/app/public/posts/featured
+            $path = $request->file('featured_image')->store('posts/featured', 'public');
+            $featuredImagePath = $path;
         }
 
-        // Kalau status published, set published_at
-        if ($request->status === 'published') {
-            $data['published_at'] = now();
-        }
-
-        // Simpan ke database
-        Post::create($data);
+        $post = Post::create([
+            'user_id'          => Auth::id(),
+            'title'            => $request->title,
+            'slug'             => $slug,
+            'post_category_id' => $request->post_category_id,
+            'content'          => $request->content,
+            'featured_image'   => $featuredImagePath,
+            'meta_title'       => $request->meta_title,
+            'meta_description' => $request->meta_description,
+            'meta_keyword'     => $request->meta_keyword,
+            'status'           => $request->status,
+            'published_at'     => $request->status === 'published' ? now() : null,
+        ]);
 
         return redirect()->route('posts.index')->with('success', 'Post berhasil dibuat.');
     }
