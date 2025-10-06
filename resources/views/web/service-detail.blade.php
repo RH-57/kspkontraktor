@@ -45,7 +45,7 @@
         <div class="container py-6">
             <div class="row g-5 ">
                 <div class="col-lg-6">
-                    <img src="{{ asset('storage/' . $service->image) }}"
+                    <img src="{{ asset('storage/public/' . $service->image) }}"
                          alt="{{ $service->title }}"
                          class="img-fluid rounded shadow-lg"
                          style="object-fit: cover; width: 100%; max-height: 450px;">
@@ -79,7 +79,7 @@
                 @foreach($relatedServices as $rel)
                 <div class="col-md-4">
                     <div class="card h-100 shadow-sm border-0">
-                        <img src="{{ asset('storage/' . $rel->image) }}"
+                        <img src="{{ asset('storage/public/' . $rel->image) }}"
                              class="card-img-top"
                              alt="{{ $rel->title }}"
                              style="object-fit: cover; height: 220px;">
