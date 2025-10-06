@@ -3,24 +3,39 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ $post->title }}</title>
+    <title>{{ $post->title }} | KSP Kontraktor</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="{{ $post->meta_keyword ?? $post->title }}" name="keywords">
-    <meta content="{{ $post->meta_description ?? Str::limit(strip_tags($post->content), 150) }}" name="description">
+    {{-- ✅ Basic SEO Meta Tags --}}
+    <meta name="title" content="{{ $post->title }}">
+    <meta name="keywords" content="{{ $post->meta_keyword ?? $post->title }}">
+    <meta name="description" content="{{ $post->meta_description ?? Str::limit(strip_tags($post->content), 150) }}">
+    <meta name="author" content="{{ $post->author ?? 'KSP Kontraktor' }}">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="id">
+    <meta name="revisit-after" content="7 days">
 
-     <!-- Open Graph Meta -->
-    <meta property="og:title" content="{{ $post->title }}" />
-    <meta property="og:description" content="{{ $post->meta_description ?? Str::limit(strip_tags($post->content), 150) }}" />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:image" content="{{ $post->featured_image ? asset('/' . $post->featured_image) : asset('assets/web/img/default.jpg') }}" />
-    <meta property="og:site_name" content="KSP Kontraktor" />
+    {{-- ✅ Canonical URL (hindari duplikat konten) --}}
+    <link rel="canonical" href="{{ url()->current() }}">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ $post->title }}" />
-    <meta name="twitter:description" content="{{ $post->meta_description ?? Str::limit(strip_tags($post->content), 150) }}" />
-    <meta name="twitter:image" content="{{ $post->featured_image ? asset('/' . $post->featured_image) : asset('assets/web/img/default.jpg') }}" />
+    {{-- ✅ Open Graph Meta (Facebook, WhatsApp, LinkedIn) --}}
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ $post->title }}">
+    <meta property="og:description" content="{{ $post->meta_description ?? Str::limit(strip_tags($post->content), 150) }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:site_name" content="KSP Kontraktor">
+    <meta property="og:image" content="{{ $post->featured_image ? asset('/' . $post->featured_image) : asset('assets/web/img/default.jpg') }}">
+    <meta property="article:published_time" content="{{ $post->created_at->toIso8601String() }}">
+    <meta property="article:modified_time" content="{{ $post->updated_at->toIso8601String() }}">
+    <meta property="article:author" content="{{ $post->author ?? 'KSP Kontraktor' }}">
+    <meta property="article:section" content="{{ $post->category->name ?? 'Artikel' }}">
+
+    {{-- ✅ Twitter Card Meta --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $post->title }}">
+    <meta name="twitter:description" content="{{ $post->meta_description ?? Str::limit(strip_tags($post->content), 150) }}">
+    <meta name="twitter:image" content="{{ $post->featured_image ? asset('/' . $post->featured_image) : asset('assets/web/img/default.jpg') }}">
+    <meta name="twitter:site" content="@kspkontraktor">
 
     <!-- Favicon -->
     <link href="{{ asset('assets/web/img/favicon.ico') }}" rel="icon">

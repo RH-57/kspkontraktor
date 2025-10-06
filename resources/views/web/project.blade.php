@@ -60,7 +60,7 @@
             @foreach($projects as $project)
             <div class="col-xl-4 col-lg-6 col-md-6 portfolio-item first">
                 <div class="position-relative portfolio-box">
-                    <img class="img-fluid w-100" src="{{ $project->images->first() ? asset('storage/' . $project->images->first()->image) : asset('default.jpg') }}"
+                    <img class="img-fluid w-100" src="{{ $project->images->first() ? asset('storage/public/' . $project->images->first()->image) : asset('default.jpg') }}"
                     alt="{{ $project->name }}"
                     style="height: 250px; object-fit: cover; border-radius: 5px;" />
                     <a class="portfolio-title shadow-sm" href="{{ route('webprojects.show', $project->slug) }}">

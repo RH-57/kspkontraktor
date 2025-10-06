@@ -3,10 +3,31 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ $project->name }} - KSP Kontraktor</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="{{ $project->meta_keyword }}" name="keywords">
-    <meta content="{{ $project->meta_description }}" name="description">
+    <title>{{ $project->name}} | KSP Kontraktor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Basic SEO -->
+    <meta name="description" content="{{ $project->meta_description ?? Str::limit(strip_tags($project->description), 160) }}">
+    <meta name="keywords" content="{{ $project->meta_keyword ?? 'proyek, kontraktor, bangunan, konstruksi, ksp kontraktor' }}">
+    <meta name="author" content="KSP Kontraktor">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="KSP Kontraktor">
+    <meta property="og:title" content="{{ $project->meta_title ?? $project->name }}">
+    <meta property="og:description" content="{{ $project->meta_description ?? Str::limit(strip_tags($project->description), 160) }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ isset($project->images[0]) ? asset('storage/public/' . $project->images[0]->image) : asset('assets/web/img/default.jpg') }}">
+    <meta property="og:locale" content="id_ID">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $project->meta_title ?? $project->name }}">
+    <meta name="twitter:description" content="{{ $project->meta_description ?? Str::limit(strip_tags($project->description), 160) }}">
+    <meta name="twitter:image" content="{{ isset($project->images[0]) ? asset('storage/public/' . $project->images[0]->image) : asset('assets/web/img/default.jpg') }}">
+    <meta name="twitter:site" content="@KSPKontraktor">
 
     <!-- Favicon -->
     <link href="{{ asset('assets/web/img/favicon.ico') }}" rel="icon">
@@ -48,7 +69,7 @@
             <!-- Gambar Utama -->
             <div class="col-lg-7">
                  @if($project->images && $project->images->count() > 0)
-                    <img src="{{ asset('storage/' . $project->images->first()->image) }}"
+                    <img src="{{ asset('storage/public/' . $project->images->first()->image) }}"
                         class="img-fluid rounded shadow-sm mb-4"
                         alt="{{ $project->name }}"
                         style="width: 100%; max-height: 400px; object-fit: cover;">
@@ -121,8 +142,8 @@
                         <div class="row g-2">
                             @foreach($project->images as $img)
                                 <div class="col-6">
-                                    <a href="{{ asset('storage/' . $img->image) }}" data-lightbox="project-gallery">
-                                        <img src="{{ asset('storage/' . $img->image) }}"
+                                    <a href="{{ asset('storage/public/' . $img->image) }}" data-lightbox="project-gallery">
+                                        <img src="{{ asset('storage/public/' . $img->image) }}"
                                             class="img-fluid rounded shadow-sm"
                                             alt="Gallery {{ $project->name }}">
                                     </a>
@@ -142,7 +163,7 @@
                                     <a href="{{ route('webprojects.show', $other->slug) }}" class="text-decoration-none">
                                         <div class="card border-0 shadow-sm h-100">
                                             <img src="{{ $other->images->first()
-                                                        ? asset('storage/' . $other->images->first()->image)
+                                                        ? asset('storage/public/' . $other->images->first()->image)
                                                         : asset('assets/web/img/default.jpg') }}"
                                                 class="card-img-top rounded-top"
                                                 alt="{{ $other->name }}"

@@ -233,7 +233,7 @@
                         <img class="img-fluid w-100" src="{{ $project->images->first() ? asset('storage/public/' . $project->images->first()->image) : asset('default.jpg') }}"
                         alt="{{ $project->name }}"
                         style="height: 250px; object-fit: cover; border-radius: 5px;" />
-                        <a class="portfolio-title shadow-sm" href="">
+                        <a class="portfolio-title shadow-sm" href="{{ route('webprojects.show', $project->slug) }}">
                             <p class="h4 text-uppercase">{{$project->name}}</p>
                             <span class="text-body"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{$project->location}}</span>
                         </a>
@@ -309,7 +309,7 @@
                 @foreach($posts as $post)
                 <div class="col-lg-4 col-md-6">
                     <div class="bg-light">
-                        <img class="img-fluid" src="{{ asset('storage/public/' . $post->featured_image) }}" alt="" style="height: 250px; object-fit: cover; border-radius: 5px;">
+                        <img class="img-fluid" src="{{ asset('storage/' . $post->featured_image) }}" alt="" style="height: 250px; object-fit: cover; border-radius: 5px;">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-4">
                                 <div class="d-flex align-items-center">

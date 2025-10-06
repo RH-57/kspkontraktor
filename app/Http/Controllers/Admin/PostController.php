@@ -42,7 +42,7 @@ class PostController
             $file->storeAs('public/posts/images', $filename);
 
             // ambil URL publik
-            $url = asset('storage/public/posts/images/' . $filename);
+            $url = asset('storage/posts/images/' . $filename);
 
             // CKEditor 5 EXPECTS "uploaded" + "url"
             return response()->json([
@@ -99,7 +99,7 @@ class PostController
             $file->storeAs('public/posts/featured', $filename);
 
             // Sesuaikan URL dengan path yang kamu pakai (pakai /storage/public/…)
-            $data['featured_image'] = 'storage/public/posts/featured/' . $filename;
+            $data['featured_image'] = 'posts/featured/' . $filename;
         }
 
         // Kalau status published, set published_at
