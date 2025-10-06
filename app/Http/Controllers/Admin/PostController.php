@@ -112,17 +112,22 @@ class PostController
             'title'             => 'required|string|max:255',
             'slug'              => 'nullable|string|max:255|unique:posts,slug,' . $post->id,
             'post_category_id'  => 'required|exists:post_categories,id',
-            'content'           => 'required',
-            'featured_image'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'content'           => 'required|string',
+            'featured_image'    => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'meta_title'        => 'nullable|string|max:255',
-            'meta_description'  => 'nullable|string',
-            'meta_keyword'      => 'nullable|string',
+            'meta_description'  => 'nullable|string|max:500',
+            'meta_keyword'      => 'nullable|string|max:255',
             'status'            => 'required|in:draft,published',
         ]);
 
-        // update featured image jika ada upload baru
+        $slugNew = $request->slug ? Str::slug($request->slug) : Str::slug($request->title);
+        if (Post::where('slug', $slugNew)->where('id', '!=', $post->id)->exists()) {
+            $slugNew .= '-' . time();
+        }
+
+        // Ganti featured image jika ada file baru
         if ($request->hasFile('featured_image')) {
-            // hapus yang lama
+            // hapus yang lama jika ada
             if ($post->featured_image && Storage::disk('public')->exists($post->featured_image)) {
                 Storage::disk('public')->delete($post->featured_image);
             }
@@ -131,12 +136,6 @@ class PostController
             $post->featured_image = $path;
         }
 
-        $slugNew = $request->slug ? Str::slug($request->slug) : Str::slug($request->title);
-            if (Post::where('slug', $slugNew)->where('id', '!=', $post->id)->exists()) {
-                $slugNew .= '-' . time();
-            }
-
-        // update field lain
         $post->update([
             'title'             => $request->title,
             'slug'              => $slugNew,
@@ -147,9 +146,10 @@ class PostController
             'meta_keyword'      => $request->meta_keyword,
             'status'            => $request->status,
             'published_at'      => $request->status === 'published' ? now() : null,
+            'featured_image'    => $post->featured_image,
         ]);
 
-        return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
+        return redirect()->route('posts.index')->with('success', 'Post berhasil diperbarui.');
     }
 
 
