@@ -162,7 +162,7 @@
                         <div class="col-md-4 mb-3">
                             <strong>Image</strong><br>
                             @if($service->image)
-                            <img src="{{ asset('storage/public/' . $service->image) }}"
+                            <img src="{{ asset('storage/' . $service->image) }}"
                                 alt="{{ $service->title }}"
                                 class="img-fluid rounded shadow-sm"
                                 style="max-height:200px;">
@@ -171,7 +171,7 @@
                         <div class="col-md-4 mb-3">
                             <strong>Meta Image</strong><br>
                             @if($service->meta_image)
-                            <img src="{{ asset('storage/public/' . $service->meta_image) }}"
+                            <img src="{{ asset('storage/' . $service->meta_image) }}"
                                 alt="Meta {{ $service->title }}"
                                 class="img-fluid rounded shadow-sm"
                                 style="max-height:200px;">
